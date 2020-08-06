@@ -1,4 +1,4 @@
-	<div class="relative mt-3 md:mt-0" x-data="{ isOpen: true }" @click.away="isOpen = false">
+<div class="searchbox relative mt-3 md:mt-0" x-data="{ isOpen: true }" @click.away="isOpen = false">
 		<input 
 			wire:model.debounce.500ms="search" 
 			type="text" 

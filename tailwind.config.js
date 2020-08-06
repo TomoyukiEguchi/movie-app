@@ -10,6 +10,9 @@ module.exports = {
         '80': '26rem',
         '88': '30rem',
         '96': '44rem',
+      },
+      boxShadow: {
+        outline: '0 0 0 2px rgba(234, 234, 234, 0.5)',
       }
     },
     spinner: (theme) => ({
