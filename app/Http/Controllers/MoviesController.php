@@ -99,7 +99,7 @@ class MoviesController extends Controller
             ->get('https://api.themoviedb.org/3/movie/'. $id. '/similar?api_key='. env('TMDB_TOKEN'))
             ->json()['results'];
 
-        dump($similarMovies);
+        //dump($similarMovies);
 
         $viewModel = new MovieViewModel(
             $movie,

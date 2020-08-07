@@ -66,7 +66,8 @@ class TvViewModel extends ViewModel
             ])->only([
                 'genre_ids', 'name', 'vote_average', 'poster_path', 'genres', 'id', 'first_air_date', 'overview', 'backdrop_path'
             ]);
-        })->dump();
+        });
+        //})->dump();
     }
 
     private function formatImages($tv) {
@@ -79,6 +80,6 @@ class TvViewModel extends ViewModel
             ])->only([
                 'poster_path', 'id', 'backdrop_path', 'name'
             ]);
-        })->dump();
+        });
     }
 }

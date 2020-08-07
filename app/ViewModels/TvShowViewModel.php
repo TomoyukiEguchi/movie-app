@@ -30,7 +30,8 @@ class TvShowViewModel extends ViewModel
         ])->only([
             'poster_path', 'id', 'genres', 'name', 'vote_average', 'overview', 'first_air_date', 'credits',
             'videos', 'images', 'crew', 'cast', 'images', 'created_by', 'number_of_seasons'
-        ])->dump();
+        ]);
+        //])->dump();
     }
 
     public function similarTvShows() {
@@ -43,6 +44,6 @@ class TvShowViewModel extends ViewModel
             ])->only([
                 'id', 'backdrop_path', 'name'
             ]);
-        })->dump();
+        });
     }
 }

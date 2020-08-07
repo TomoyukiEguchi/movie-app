@@ -34,7 +34,8 @@ class MovieViewModel extends ViewModel
         ])->only([
             'poster_path', 'id', 'genres', 'title', 'vote_average', 'overview', 'release_date', 'credits',
             'videos', 'images', 'crew', 'cast', 'images', 'runtime'
-        ])->dump();
+        //])->dump();
+        ]);
     }
 
     public function hours() {
@@ -57,6 +58,6 @@ class MovieViewModel extends ViewModel
             ])->only([
                 'id', 'backdrop_path', 'title'
             ]);
-        })->dump();
+        });
     }
 }

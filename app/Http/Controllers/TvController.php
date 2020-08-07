@@ -98,7 +98,7 @@ class TvController extends Controller
             ->get('https://api.themoviedb.org/3/tv/'. $id. '/similar?api_key='. env('TMDB_TOKEN'))
             ->json()['results'];
 
-        dump($similarTvshows);
+        //dump($similarTvshows);
 
         $viewModel = new TvShowViewModel(
             $tvshow,

@@ -4,7 +4,7 @@
 
 <div class="container mx-auto">
 	<!-- Swiper -->
-	<div class="swiper-container relative">
+	<div class="swiper-container relative h-100">
 		<div class="swiper-wrapper">
 			@foreach ($swiperSlideImages as $movie)
 				<div class="swiper-slide bg-cover bg-center" style="background-image:url({{ $movie['backdrop_path'] }})">
