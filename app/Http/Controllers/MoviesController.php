@@ -17,21 +17,21 @@ class MoviesController extends Controller
     public function index()
     {
         $popularMovies = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/popular?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/movie/popular')
             ->json()['results'];
 
         //dd($popularMovies);
 
         $nowPlayingMovies = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/now_playing?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/movie/now_playing')
             ->json()['results'];
 
         $topRatedMovies = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/top_rated?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/movie/top_rated')
             ->json()['results'];
 
         $upcomingMovies = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/upcoming?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/movie/upcoming')
             ->json()['results'];
 
         //dump($upcomingMovies);
@@ -89,14 +89,14 @@ class MoviesController extends Controller
     public function show($id)
     {
         $movie = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/'. $id. '?api_key='. env('TMDB_TOKEN'). '&append_to_response=credits,videos,images')
+            ->get('https://api.themoviedb.org/3/movie/'.$id.'?append_to_response=credits,videos,images')
             ->json();
         
         $hours = floor($movie['runtime']/60);
         $minutes = $movie['runtime'] % 60;
 
         $similarMovies = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/'. $id. '/similar?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/movie/'. $id. '/similar')
             ->json()['results'];
 
         //dump($similarMovies);

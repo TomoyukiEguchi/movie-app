@@ -19,7 +19,7 @@ class ActorsController extends Controller
         abort_if($page > 500, 204);
 
         $popularActors = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/person/popular?api_key='.env('TMDB_TOKEN').'&page='.$page)
+            ->get('https://api.themoviedb.org/3/person/popular?page='.$page)
             ->json()['results'];
 
         $viewModel = new ActorsViewModel($popularActors, $page);
@@ -57,15 +57,15 @@ class ActorsController extends Controller
     public function show($id)
     {
         $actor = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/person/'. $id. '?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/person/'.$id)
             ->json();
 
         $social = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/person/'. $id. '/external_ids?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/person/'.$id.'/external_ids')
             ->json();
 
         $credits = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/person/'. $id. '/combined_credits?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/person/'.$id.'/combined_credits')
             ->json();
 
         $viewModel = new ActorViewModel($actor, $social, $credits);

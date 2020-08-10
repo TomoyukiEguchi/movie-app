@@ -17,21 +17,21 @@ class TvController extends Controller
     public function index()
     {
         $popularTv = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/tv/popular?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/tv/popular')
             ->json()['results'];
 
         //dd($popularMovies);
 
         $airingTodayTv = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/tv/airing_today?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/tv/airing_today')
             ->json()['results'];
 
         $topRatedTv = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/tv/top_rated?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/tv/top_rated')
             ->json()['results'];
 
         $genres = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/genre/tv/list?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/genre/tv/list')
             ->json()['genres'];
 
         //dump($nowPlayingMovies);
@@ -89,13 +89,13 @@ class TvController extends Controller
     public function show($id)
     {
         $tvshow = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/tv/'. $id. '?api_key='. env('TMDB_TOKEN'). '&append_to_response=credits,videos,images')
+            ->get('https://api.themoviedb.org/3/tv/'.$id.'?append_to_response=credits,videos,images')
             ->json();
 
         //dump($movie);
 
         $similarTvshows = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/tv/'. $id. '/similar?api_key='. env('TMDB_TOKEN'))
+            ->get('https://api.themoviedb.org/3/tv/'.$id.'/similar')
             ->json()['results'];
 
         //dump($similarTvshows);
