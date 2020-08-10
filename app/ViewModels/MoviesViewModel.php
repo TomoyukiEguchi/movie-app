@@ -19,7 +19,7 @@ class MoviesViewModel extends ViewModel
         $this->nowPlayingMovies = $nowPlayingMovies;
         $this->topRatedMovies = $topRatedMovies;
         $this->upcomingMovies = $upcomingMovies;
-        $this->swiperSlideImages = $topRatedMovies;
+        $this->swiperSlideImages = $nowPlayingMovies;
     }
 
     public function popularMovies() {
@@ -59,10 +59,10 @@ class MoviesViewModel extends ViewModel
 
     public function swiperSlideImages() {
 
-        return collect($this->topRatedMovies)->map(function($movie) {
+        return collect($this->nowPlayingMovies)->map(function($movie) {
             return collect($movie)->merge([
                 'backdrop_path' => $movie['backdrop_path']
-                    ? 'https://image.tmdb.org/t/p/w1280/' .$movie['backdrop_path']
+                    ? 'https://image.tmdb.org/t/p/w1280/'.$movie['backdrop_path']
                     : 'https://via.placeholder.com/780x439',
             ])->only([
                 'id', 'backdrop_path', 'title'
